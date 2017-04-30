@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+ <head>
+  <title id="vid5">Webcirque H5 Player</title>
+  <meta charset="UTF-8"></meta>
+  <link rel="shortcut icon" type="image/png" href="http://fds.webapi.ga/webplayer/icon64.png" media="screen"></link>
+  <style>
+   div, video, textarea {position:absolute;font-family:"Verdana","微软雅黑";font-size:16px;color:#fff;}
+   div#video-container {top:0px;left:0px;width:100%;height:100%;background-color:#000;}
+   video#video {top:0px;left:0px;width:100%;height:100%;background-color:transparent;}
+   div#vidcover {top:0px;left:0px;width:100%;height:100%;background-color:#000;opacity:0;}
+   div#header {top:0px;left:0px;width:100%;height:32px;background-color:#111;opacity:0.6;overflow:auto;}
+   div#footer {bottom:0px;left:0px;width:100%;height:32px;background-color:#111;opacity:0.6;}
+   div#playbtn {top:4px;left:4px;}
+   div#pausebtn {top:4px;left:4px;}
+   div#loadimg {animation-name:loadimg;animation-duration:1s;animation-iteration-count:infinite;}
+   div#playtime {top:5px;left:32px;text-align:center;width:128px;}
+   div#timeBarBack {height:22px;width:600px;border:1px solid;border-color:#fff;left:164px;top:4px;}
+   div#timeBarFront {height:22px;width:0px;left:165px;top:5px;background-color:#666;opacity:1;}
+   div.hidebtn {top:50%;left:0px;transform:translate(0%,-50%);height:24px;width:40px;background-color:#000;opacity:0.6;text-align:center;}
+   @keyframes loadimg {
+    0% {top:50%;left:50%;transform:translate(-50%, -50%);width:16px;height:16px;border:0px solid;border-radius:8px;background-color:#eee;opacity:1;}
+    50% {top:50%;left:50%;transform:translate(-50%, -50%);width:48px;height:48px;border:0px solid;border-radius:24px;backround-color:#fff;opacity:1;}
+    100% {top:50%;left:50%;transform:translate(-50%, -50%);width:16px;height:16px;border:0px solid;border-radius:8px;background-color:#eee;opacity:1;}}
+    div#playsettings {top:50%;left:50%;width:640px;height:360px;border:1px solid;border-color:#444;border-radius:2px;background-color:#333;transform:translate(-50%, -50%);overflow:auto;opacity:0.6;}
+   div#playrate {top:60px;left:38px;font-size:30px;color:#009fff;text-align:center;width:50px;height:36px;}
+   textarea#playrateEdit {top:58px;left:36px;font-size:30px;color:#009fff;text-zlign-center;border:none 0px;background-color:transparent;width:50px;height:36px;}
+   div.setuparea {border:solid 1px;border-color:#fff;}
+   div#fpsShow {top:6px;left:6px;width:51px;text-align:left;overflow:auto;}
+   input#dragProg {position:absolute;height:22px;width:100px;left:162px;top:1px;border:1px solid;border-color:#fff;opacity:0;}
+   div#Dragger {height:22px;width:12px;right:0px;background-color:#fff;opacity:1;}
+   div#VolumeBarBack {height:22px;width:112px;border:1px solid;border-color:#fff;top:4px;right:4px;}
+   div#VBF {height:22px;width:112px;top:5px;background-color:#666;right:-60px;}
+   div#VolumeBarDragger {height:22px;width:12px;right:0px;background-color:#fff;opacity:1;}
+   input#VolumeDragger {position:absolute;width:112px;height:22px;top:3px;opacity:0;}
+   div#SuperContainer {overflow:hidden;}
+   div#Volume {right:120px;top:5px;}
+   div#frameShow {left:62px;top:6px;width:140px;overflow:auto;}
+   textarea#keyResponser {top:32px;left:4px;opacity:0;}
+  </style>
+ </head>
+ <body onresize="resizeTimeBar(true);" onload="resizeTimeBar(true);historyRead();">
+  <div id="video-container">
+   <video id="video" onwait="if(video.paused==true) {loadimg.style.display=''};" oncanplay="loadimg.style.display='none';" oncanplaythrough="if (loaded==false) {writeDebug('Media load complete.');loaded = true;}">
+   </video>
+   <div id="vidcover" onmouseover="actPanel()" onmouseout="deaPanel()">
+   </div>
+   <textarea id="keyResponser" onmouseover="actPanel()" onmouseout="deaPanel()" onkeydown="respKey();"></textarea>
+   <div class="hidebtn">隐藏</div>
+   <div id="header" onmouseover="actPanel()" onmouseout="deaPanel()">
+   <div id="SuperContainer" style="top:0px;left:0px;width:100%;height:100%;">
+    <div id="fpsShow">32FPS</div>
+    <div id="VolumeBarBack"></div>
+    <div id="VBF">
+     <div id="VolumeBarDragger"></div>
+    </div>
+   <div id="Volume">100%</div>
+   <input id="VolumeDragger" type="range" min="0" max="100" onmousedown="volAcc=false;" onmouseup="volAcc=true;"/>
+   <div id="frameShow">1280x720 100%</div>
+   </div>
+   </div>
+   <div id="footer" onmouseover="actPanel()" onmouseout="deaPanel()">
+    <div id="playbtn" onclick="playVid()" style="" onmouseover="actPanel()" onmouseout="deaPanel()">
+     <img src="http://fds.webapi.ga/webplayer/play.png"/>
+    </div>
+    <div id="pausebtn" onclick="pauseVid()" style="display:none;" onmouseover="actPanel()" onmouseout="deaPanel()">
+     <img src="http://fds.webapi.ga/webplayer/pause.png"/>
+    </div>
+    <div id="playtime" ondblclick="accujump()" onmouseover="actPanel()" onmouseout="deaPanel()">00:00/00:00
+    </div>
+    <div id="timeBarBack" onclick="foreward()" onmouseover="actPanel()" onmouseout="deaPanel()">
+    </div>
+    <div id="timeBarFront" onclick="backward()" onmouseover="actPanel()" onmouseout="deaPanel()">
+     <div id="Dragger"></div>
+    </div>
+    <input type="range" id="dragProg" min="0" max="1" step="0.0001" onmouseup="dragProgDone();autoAcceptable=true;" onmousedown="autoAcceptable=false;"></input>
+   </div>
+   <div id="loadimg">
+   </div>
+   <div id="playsettings" style="display:none;">
+    <img style="position:absolute;left:4px;top:4px;width:32px;height:32px;" src="img/icon64.png"/>
+    <div style="top:4px;left:40px;font-size:22px;display:inline-block;">MWASH HTML5 Player 播放选项</div>
+    <div style="top:4px;right:8px;" onclick="noacjump()">×</div>
+    <div class="setuparea" style="width:116px;height:54px;top:42px;left:7px;"></div>
+    <div style="top:44px;left:10px;">播放进度与速率</div>
+    <div id="playrate" onclick="custspeed(1)">1.0</div>
+    <textarea id="playrateEdit" ondblclick="custspeed(2)" style="display:none;"></textarea>
+    <div style="top:44px;left:140px;">播放音量</div>
+    <div id="volumeShow"></div>
+    <div></div>
+   </div>
+  </div>
+  <script title="元素直接调用的代码块">
+  //响应按键请求
+  function respKey() {
+   req=event.which;
+   if (req==37) { //按左键
+    video.currentTime=video.currentTime-10;}
+   if (req==39) { //按右键
+    video.currentTime=video.currentTime+10;}
+   if (req==32) { //按空格
+    if (vidst==1) {pauseVid();}
+    if (vidst==2) {playVid();}
+   }
+   if (req==72) { //按H键
+    deaPanel();}
+   if (req==71) { //按G键
+    actPanel();}
+   if (req==68) { //按D键
+    showDebugList();}
+   if (req==38) { //按上键
+    if (video.volume < 0.95) {video.volume = Math.floor(video.volume*100+5)/100;}
+    else if (video.volume = 0.5) {video.volume = 0.55}
+    else {video.volume = 1}}
+   if (req==40) { //按下键
+    if (video.volume > 0.05) {video.volume = Math.floor(video.volume*100-5)/100;}
+    else if (video.volume = 0.6) {video.volume = 0.55}
+    else {video.volume = 0}}
+   writeDebug("Key " + req + " pressed.");}
+  //读取历史时间
+  function historyRead() {
+  if (localStorage.getItem(video.src) !== null) {video.currentTime = localStorage.getItem(video.src)}}
+  //调整时间条
+  function resizeTimeBar(msgrtb) {
+   tbback.style.width = getWinWidth() - 154 +"px";
+   dragProg.style.width = getWinWidth() - 154 +"px";
+   rvlength = getWinWidth() - 154;
+   vbf.style.left = getWinWidth() - 101 + "px";
+   vold.style.left=getWinWidth() - 103 + "px";
+   krsp.style.width=getWinWidth() + "px";
+   krsp.style.height=(video.clientHeight - 68) + "px";
+   if (msgrtb !== false) {writeDebug("Timebar resized.");}
+  }
+  //播放视频
+  function playVid() {
+   video.play();
+   writeDebug("Played video.");}
+  //暂停视频
+  function pauseVid() {
+   video.pause();
+   writeDebug("Paused video.");}
+  //显示操控面板
+  function actPanel() {
+   header.style.opacity = 0.6;
+   footer.style.opacity = 0.6;}
+  //隐藏操控面板
+  function deaPanel() {
+   header.style.opacity = 0;
+   footer.style.opacity = 0;}
+  //显示视频播放设置
+  function accujump() {
+   psetup.style.display="";
+   writeDebug("Showed video playback settings.");}
+  //隐藏视频播放设置
+  function noacjump() {
+   psetup.style.display="none";
+   writeDebug("Hid video playback settings.");}
+  //倒带
+  function backward() {
+   if (video.currentTime < 10)
+   {video.currentTime = 0}
+   else
+   {video.currentTime = video.currentTime - 10}
+   writeDebug("Video backwarded.");}
+  //快进
+  function foreward() {
+   if (video.duration < 40)
+   {video.currentTime = video.currentTime + video.duration/5;}
+   else if (video.duration > 1800)
+   {video.currentTime = video.currentTime + video.duration/vstdm;}
+   else
+   {video.currentTime = video.currentTime + 10;}
+   writeDebug("Video forewarded.");}
+  //调整播放速度
+  function custspeed(type) {
+   if (type==1) {
+   prate.style.display="none";
+   prateE.style.display="";
+   prateE.value = prate.innerHTML;}
+   if (type==2) {
+   prate.style.display="";
+   prateE.style.display="none";
+   prate.innerHTML=prateE.value;
+   video.playbackRate = prateE.value;}
+   }
+  //调整进度
+  function dragProgDone() {
+   video.currentTime=dragProg.value*video.duration;}
+  //调整音量
+  function volumeSet(vol) {
+   video.volume = (vol/100);
+   vols.innerHTML = vol + "%";}
+  </script>
+  <script title="循环执行的代码块">
+   setInterval("repeatDetect()",31.25);
+   function repeatDetect() {
+   //检测视频是否播放或暂停
+   if (video.paused == false) {playbtn.style.display="none";pausebtn.style.display="";loadimg.style.display="none"; vidst=1;}
+   if (video.paused == true) {pausebtn.style.display="none";playbtn.style.display=""; vidst=2;}
+   //显示当前视频时间并检测播放错误
+   if (video.error == "[object MediaError]") {playtime.innerHTML = "媒体加载错误"} else {
+   vstcm = Math.floor(video.currentTime/60);
+   vstcs = Math.floor(video.currentTime - vstcm * 60);
+   vstdm = Math.floor(video.duration/60);
+   vstds = Math.floor(video.duration - vstdm * 60);
+   if (vstcm < 10) {vstcm = "0" + vstcm;}
+   if (vstcs < 10) {vstcs = "0" + vstcs;}
+   if (vstdm < 10) {vstdm = "0" + vstdm;}
+   if (vstds < 10) {vstds = "0" + vstds;}
+   playtime.innerHTML = vstcm + ":" + vstcs + "/" + vstdm + ":" + vstds;}
+   //改变进度条长度
+   tbfront.style.width = ((video.currentTime / video.duration) * (rvlength-12) + 12) + "px";
+   if (autoAcceptable!==false) {
+    dragProg.value=video.currentTime/video.duration;}
+   else {
+    tbfront.style.width = (dragProg.value * (rvlength-12) +12) + "px";}
+   //显示视频内容
+   videores = video.src;
+   while (videores.search("%20")>-1) {
+   videores = videores.replace("%20"," "); }
+   ptitle.innerHTML = "Webcirque H5 Player " + version + " [" + videores + "]";
+   //显示FPS与视频帧宽高
+   lastfps = currfps;
+   timep = new Date();
+   currfps = timep.getMilliseconds();
+   if (currfps>lastfps) {
+    fpsShow.innerHTML = Math.floor(1000/(currfps-lastfps)) + "FPS"}
+   else {
+    fpsShow.innerHTML = Math.floor(1000/(1000+currfps-lastfps)) + "FPS";}
+   if (video.videoHeight!==0) {
+   frsh.innerHTML = video.videoWidth + "x" + video.videoHeight + " " + Math.round(video.clientHeight/video.videoHeight*100) + "%";} else {frsh.innerHTML = "AUDIO";}
+   //音量调整
+   if (volAcc!==false) {
+   vbf.style.width = video.volume*100+12 +"px";
+   vold.value = video.volume*100;
+   vols.innerHTML = video.volume*100 + "%";
+   }
+   else {
+   vbf.style.width = vold.value/1 + 12 +"px";
+   vols.innerHTML = vold.value + "%";
+   video.volume = vold.value/100;
+   }
+  //自动记录进度
+  if (video.currentTime/video.duration<0.9) {
+   localStorage.setItem(video.src, video.currentTime);}
+  else {localStorage.removeItem(video.src);}
+  //保证KRSP模块内容为空
+  krsp.value="";
+   }
+  </script>
+  <script title="WebMaker公用代码缩写库(Chrome适用)">
+   // getElementById的缩写命令
+   function dgb (elename) {
+    retres = document.getElementById(elename);
+    return (retres);
+    retres = null;}
+   // 获取窗口大小
+   function getWinWidth () {
+    return (document.body.clientWidth);}
+   function getWinHeight () {
+    return (document.body.clientHeight);}
+   // 调试用命令
+   function writeDebug(Message) {
+    sampletime = new Date();
+    month = sampletime.getMonth();
+    date = sampletime.getDate();
+    hour = sampletime.getHours();
+    minute = sampletime.getMinutes();
+    second = sampletime.getSeconds();
+    if (hour<10) {hour = "0"+hour}
+    if (minute<10) {minute = "0"+minute}
+    if (second<10) {second = "0"+second}
+    LastDenugMsg = Message;
+    DebugMsg = DebugMsg + "[" + month + "-" + date + " " + hour +":" + minute + ":" + second + "] " + Message +"\n";
+    console.log("[" + month + "-" + date + " " + hour +":" + minute + ":" + second + "] " + Message);
+    month = null;
+    date = null;
+    hour = null;
+    minute = null;
+    second = null;}
+   function showDebugList() {
+    alert ("WebMaker Public Repository generated these debug logs:\n\n" + DebugMsg);}
+   //videoHeight:帧高度;videoWidth:帧宽度;
+  </script>
+  <script title="文档加载完毕自动执行的代码块">
+   //加载元素
+   video = dgb("video");
+   playbtn = dgb("playbtn");
+   pausebtn = dgb("pausebtn");
+   playtime = dgb("playtime");
+   tbback = dgb("timeBarBack");
+   tbfront = dgb("timeBarFront");
+   loadimg = dgb("loadimg");
+   header = dgb("header");
+   footer = dgb("footer");
+   ptitle = dgb("vid5");
+   psetup = dgb("playsettings");
+   prate = dgb("playrate");
+   prateE = dgb("playrateEdit");
+   fpsShow = dgb("fpsShow");
+   progd=dgb("dragProg");
+   vbf = dgb("VBF");
+   vols = dgb("Volume");
+   vold = dgb("VolumeDragger");
+   krsp = dgb("keyResponser");
+   frsh = dgb("frameShow");
+   //设置初始消息
+   DebugMsg = "";
+   //H5播放器版本
+   version = "DR25";
+   //响应视频播放请求
+   video.src = window.location.search.replace("?","");
+   //解决视频已加载完毕而无反馈的bug
+   loaded = false;
+   //设置初始检测
+   lastfps = 0;
+   currfps = 0;
+   autoAcceptable=true;
+   volAcc = true;
+  </script>
+ </body>
