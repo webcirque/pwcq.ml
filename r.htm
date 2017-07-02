@@ -3,8 +3,6 @@
 <head>
  <link rel="shortcut icon" type="image/ico" src="https://hydra-media.cursecdn.com/minecraft-zh.gamepedia.com/6/64/Favicon.ico"/>
  <title>Redirecting...</title>
-</head>
-<body onload="onloadPage()">
  <script>
   function onloadPage() {
   query = window.location.search.replace("?c=","");
@@ -29,12 +27,14 @@
    reply = "<span style="color:red;">Redirect code is incorrect.</span>";
   }
   }
- </script>
- <h1 style="font-family:'Verdana';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Redirecting...</h1>
+</script>
+</head>
+<body onload="onloadPage()">
+ <div style="font-family:'Verdana';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Redirecting...</div>
  <script>
   function delayed() {
   if (reply !== "") {
-   document.getElementsByTagName('h1')[0].innerHTML=reply;
+   document.getElementsByTagName('div')[0].innerHTML=reply;
   }}
   setTimeout(1000,"delayed();");
  </script>
