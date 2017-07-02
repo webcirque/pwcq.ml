@@ -7,25 +7,34 @@
 <body onload="onloadPage()">
  <script>
   function onloadPage() {
-  query = window.location.search.replace("?","");
-  if (query=="6WT2")
+  query = window.location.search.replace("?c=","");
+   reply = "";
+  if (query=="mcwikizh")
   {
    window.location.href="http://minecraft-zh.gamepedia.com/";
   }
-  if (query=="42U9")
+  else if (query=="mcwiki")
   {
    window.location.href="http://minecraft.gamepedia.com/";
   }
-  if (query=="36TR")
+  else if (query=="mwash")
   {
    window.location.href="http://mwash.win/";
   }
-  if (query=="8RF5")
+  else if (query=="excitedfrog")
   {
    window.location.path="error.htm";
   }
+  else {
+   reply = "Redirect code is incorrect.";
+  }
   }
  </script>
- <h1>Redirecting...</h1>
+ <h1 style="font-family:'Verdana';">Redirecting...</h1>
+ <script>
+  if (reply !== "") {
+   document.getElementsByTagName('h1')[0].innerHTML=reply;
+  }
+ </script>
 </body>
 </html>
