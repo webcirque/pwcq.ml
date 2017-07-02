@@ -23,6 +23,8 @@
   {
    window.location.path="error.htm";
   }
+  else if (query=="debug") {
+  }
   else {
    reply = "<span style='color:red;'>Redirect code is incorrect.</span>";
   }
@@ -36,7 +38,6 @@
 </script>
 </head>
 <body onload="onloadPage();delayed();">
- <div class="notice" style="font-family:'Verdana';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Redirecting...</div>
-
+ <div class="notice" style="font-size:54px;font-weight:700;font-family:'Verdana';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Redirecting...</div>
 </body>
 </html>
