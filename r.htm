@@ -1,23 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+ <script src="https://mwashfds.github.io/fds/libs/wmlib.dev.js"></script>
  <link rel="shortcut icon" type="image/ico" src="https://hydra-media.cursecdn.com/minecraft-zh.gamepedia.com/6/64/Favicon.ico"/>
  <title>Redirecting...</title>
  <script>
   function onloadPage() {
-  query = window.location.search.replace("?c=","");
-   reply = "";
+  child = _wsgetItem(window.location.search,"s",";","=");
+  query = _wsgetItem(window.location.search,"c",";","=");
+  reply = "";
+  _wm.ds="";
   if (query=="mcwikizh")
   {
-   window.location.href="http://minecraft-zh.gamepedia.com/";
+   _wm.ds="http://minecraft-zh.gamepedia.com/";
   }
   else if (query=="mcwiki")
   {
-   window.location.href="http://minecraft.gamepedia.com/";
+   _wm.ds="http://minecraft.gamepedia.com/";
   }
   else if (query=="mwash")
   {
-   window.location.href="http://mwash.win/";
+   _wm.ds="http://mwash.win/";
   }
   else if (query=="excitedfrog")
   {
@@ -27,6 +30,12 @@
   }
   else {
    reply = "<span style='color:red;'>Redirect code is incorrect.</span>";
+  }
+  if (_wm.ds !== ""){
+   if (child !== "") {
+    window.location.href = _wm.ds + child;
+   }
+   else {window.location.href = _wm.ds}
   }
   }
 </script>
