@@ -26,15 +26,17 @@
    window.location.path="error.htm";
   }
   else {
-   reply = "Redirect code is incorrect.";
+   reply = "<span style="color:red;">Redirect code is incorrect.</span>";
   }
   }
  </script>
- <h1 style="font-family:'Verdana';">Redirecting...</h1>
+ <h1 style="font-family:'Verdana';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Redirecting...</h1>
  <script>
+  function delayed() {
   if (reply !== "") {
    document.getElementsByTagName('h1')[0].innerHTML=reply;
-  }
+  }}
+  setTimeout(1000,"delayed();");
  </script>
 </body>
 </html>
