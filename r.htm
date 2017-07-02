@@ -28,15 +28,15 @@
   }
   }
 </script>
+<script>
+ function delayed() {
+ if (reply !== "") {
+  document.getElementsByClassName('notice')[0].innerHTML=reply;
+ }}
+</script>
 </head>
-<body onload="onloadPage()">
+<body onload="onloadPage();delayed();">
  <div class="notice" style="font-family:'Verdana';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Redirecting...</div>
- <script>
-  function delayed() {
-  if (reply !== "") {
-   document.getElementsByClassName('notice')[0].innerHTML=reply;
-  }}
-  setTimeout(1000,"delayed();");
- </script>
+
 </body>
 </html>
