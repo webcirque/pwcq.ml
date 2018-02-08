@@ -9,9 +9,9 @@ permalink: /404.html
   <script src="/ScriptLib/scriptlib.js"></script>
 </head>
 <body style="width:560px">
-  <p id="output-h" style="color:red;font-weight:700;font-size:1em;">Error $1</p>
-  <p id="output-d">An error occured when requesting $2.</p>
-  <p><a href="/">Go Back Home</a></p>
+  <center><span title id="output-h" style="color:red;font-weight:700;">Error $1</span></center><br />
+  <span id="output-d">An error occured when requesting [<b>$2</b>].</span>
+  <br /><a href="/">Go Back Home</a>
   <script>
 window.onload = function () {
   oh = _.g("id:output-h");
