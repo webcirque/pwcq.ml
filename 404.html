@@ -13,6 +13,9 @@ permalink: /404.html
   <center><span id="output-d">An error occured when requesting [<b>$2</b>].</span></center>
   <center><br /><a href="/" id="cbh"><b>Go Back Home</b></a></center><br />
   <script>
+if (window.navigator.userAgent.search("Mobile") == -1) {
+  window.location.href = "/error/?code=403&page=" + textlang.loc[textlang.loc.length - 1] ;
+}
 window.onload = function () {
   oh = _.g("id:output-h");
   od = _.g("id:output-d");
@@ -57,7 +60,6 @@ window.onload = function () {
       document.body.appendChild(mob);
       document.body.style.fontSize = "18px";
       oh.style.fontSize = "32px";
-      window.location.href = "/error/?code=403&page=" + textlang.loc[textlang.loc.length - 1] ;
     }
     else {
       mob = document.createElement("center");
