@@ -24,28 +24,28 @@ window.onload = function () {
     textlang.erdesc = "服务器出于安全原因拒绝了对页面[$2]的请求。";
     textlang.backHome = "返回主页";
     textlang.mobile = "您使用的是移动版视图";
-    textlang.mobile = "您使用的是桌面版视图";
+    textlang.desktop = "您使用的是桌面版视图";
   }
   else if (window.navigator.language == "zh_TW" || window.navigator.language == "zh_hant") {
     textlang.ermsg = "錯誤 $1";
     textlang.erdesc = "伺服器出於安全緣由而拒絕訪問[$2]。";
     textlang.backHome = "返回主頁";
     textlang.mobile = "您使用的是行動電話版視圖";
-    textlang.mobile = "您使用的是計算機版視圖";
+    textlang.desktop = "您使用的是計算機版視圖";
   }
   else if (window.navigator.language == "ja") {
     textlang.ermsg = "错误 $1";
     textlang.erdesc = "服务器出于安全原因拒绝了对页面[$2]的请求。";
     textlang.backHome = "返回主页";
     textlang.mobile = "您使用的是移动版视图";
-    textlang.mobile = "您使用的是桌面版视图";
+    textlang.desktop = "您使用的是桌面版视图";
   }
   else {
     textlang.ermsg = "ERROR: ACCESS DENIED";
     textlang.erdesc = "Server refused requesting [<b>$2</b>].";
     textlang.backHome = "Back to Home";
     textlang.mobile = "You are using mobile vision.";
-    textlang.mobile = "You are using desktop vision.";
+    textlang.desktop = "You are using desktop vision.";
   }
   oh.innerHTML = textlang.ermsg.replace("$1","403");
   od.innerHTML = textlang.erdesc.replace("$2", decodeURI(textlang.loc[textlang.loc.length - 1]));
