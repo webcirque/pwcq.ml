@@ -17,6 +17,17 @@ window.onload = function () {
   document.title = document.title.replace("$1","403");
   oh.innerHTML = oh.innerHTML.replace("$1","403");
   od.innerHTML = od.innerHTML.replace("$2",window.location.href);
+  try {  
+    if (window.navigator.userAgent.search("Mobile") != -1) {
+      document.getElementsByTagName("body")[0].style = "max-width:480px;";
+      mob = document.createElement("p");
+      mob.innerHTML = "You are using mobile vision.";
+      document.body.appendChild(mob);
+    }
+  }
+  catch (err) {
+  alert(err.stack);
+  }
 }
   </script>
 </body>
