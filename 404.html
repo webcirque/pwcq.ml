@@ -3,31 +3,62 @@ permalink: /404.html
 ---
 <!DOCTYPE html>
 <head>
-  <meta charset="UTF-8"></meta>
+  <meta charset="UTF-8" http-equiv="403"></meta>
   <link rel="stylesheet" type="text/css" href="/ScriptLib/global.css"></link>
-  <title>Error $1</title>
+  <title>Error 403</title>
   <script src="/ScriptLib/scriptlib.js"></script>
 </head>
 <body style="min-width:1280px;font-size:32px;">
   <center><span id="output-h" style="color:red;font-weight:700;font-size:64px;">Error $1</span></center><br />
   <center><span id="output-d">An error occured when requesting [<b>$2</b>].</span></center>
-  <center><br /><a href="/"><b>Go Back Home</b></a></center><br />
+  <center><br /><a href="/" id="cbh"><b>Go Back Home</b></a></center><br />
   <script>
 window.onload = function () {
   oh = _.g("id:output-h");
   od = _.g("id:output-d");
-  document.title = document.title.replace("$1","403");
-  oh.innerHTML = oh.innerHTML.replace("$1","403");
-  od.innerHTML = od.innerHTML.replace("$2", decodeURI(window.location.href));
+  cbh = _.g("id:cbh");
+  textlang = {};
+  textlang.loc = window.location.href.split("/");
+  if (window.navigator.language == "zh_CN" || window.navigator.language == "zh_hans") {
+    textlang.ermsg = "错误 $1";
+    textlang.erdesc = "服务器出于安全原因拒绝了对页面[$2]的请求。";
+    textlang.backHome = "返回主页";
+    textlang.mobile = "您使用的是移动版视图";
+    textlang.mobile = "您使用的是桌面版视图";
+  }
+  else if (window.navigator.language == "zh_TW" || window.navigator.language == "zh_hant") {
+    textlang.ermsg = "錯誤 $1";
+    textlang.erdesc = "伺服器出於安全緣由而拒絕訪問[$2]。";
+    textlang.backHome = "返回主頁";
+    textlang.mobile = "您使用的是行動電話版視圖";
+    textlang.mobile = "您使用的是計算機版視圖";
+  }
+  else if (window.navigator.language == "ja") {
+    textlang.ermsg = "错误 $1";
+    textlang.erdesc = "服务器出于安全原因拒绝了对页面[$2]的请求。";
+    textlang.backHome = "返回主页";
+    textlang.mobile = "您使用的是移动版视图";
+    textlang.mobile = "您使用的是桌面版视图";
+  }
+  else {
+    textlang.ermsg = "ERROR: ACCESS DENIED";
+    textlang.erdesc = "Server refused requesting [<b>$2</b>].";
+    textlang.backHome = "Back to Home";
+    textlang.mobile = "You are using mobile vision.";
+    textlang.mobile = "You are using desktop vision.";
+  }
+  oh.innerHTML = textlang.ermsg.replace("$1","403");
+  od.innerHTML = textlang.erdesc.replace("$2", decodeURI(textlang.loc[textlang.loc.length - 1]));
+  cbh.innerHTML = textlang.backHome;
   try {  
     if (window.navigator.userAgent.search("Mobile") == -1) {
       mob = document.createElement("center");
-      mob.innerHTML = "You are using desktop vision.";
+      mob.innerHTML = textlang.desktop;
       document.body.appendChild(mob);
     }
     else {
       mob = document.createElement("center");
-      mob.innerHTML = "You are using mobile vision.";
+      mob.innerHTML = textlang.mobile;
       document.body.appendChild(mob);
     }
   }
