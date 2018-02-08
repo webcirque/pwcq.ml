@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8"></meta>
+  <link rel="stylesheet" type="text/css" href="/ScriptLib/global.css"></link>
+  <title>Error $1</title>
+  <script src="/ScriptLib/scriptlib.js"></script>
+</head>
+<body>
+  <p id="output-h">Error $1</p>
+  <p id="output-d">An error occured when requesting $2.</p>
+  <p><a href="/">Go Back Home</a></p>
+  <script>
+window.onload = function () {
+  oh = _.g("id:output-h");
+  od = _.g("id:output-d");
+  document.title = document.title.replace("$1","403");
+  oh.innerHTML = oh.innerHTML.replace("$1","403");
+  od.innerHTML = od.innerHTML.replace("$2",window.location.href);
+}
+  </script>
+</body>
