@@ -1,5 +1,5 @@
-try {
-  window.onload = function () {
+window.onload = function () {
+  try {  
     if (window.navigator.userAgent.search("Mobile") != -1) {
       document.getElementsByTagName("body")[0].style = "max-width:480px;";
       mob = document.createElement("p");
@@ -7,7 +7,7 @@ try {
       document.body.appendChild(mob);
     }
   }
-}
-catch (err) {
+  catch (err) {
   alert(err.stack);
+  }
 }
