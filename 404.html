@@ -18,7 +18,7 @@ window.onload = function () {
   od = _.g("id:output-d");
   document.title = document.title.replace("$1","403");
   oh.innerHTML = oh.innerHTML.replace("$1","403");
-  od.innerHTML = od.innerHTML.replace("$2",window.location.href);
+  od.innerHTML = od.innerHTML.replace("$2", decodeURI(window.location.href));
   try {  
     if (window.navigator.userAgent.search("Mobile") == -1) {
       mob = document.createElement("center");
