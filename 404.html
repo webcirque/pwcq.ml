@@ -8,8 +8,8 @@ permalink: /404.html
   <title>Error $1</title>
   <script src="/ScriptLib/scriptlib.js"></script>
 </head>
-<body style="width:540px">
-  <center><span title id="output-h" style="color:red;font-weight:700;">Error $1</span></center><br />
+<body style="min-width:1280px;font-size:28px;">
+  <center><span id="output-h" style="color:red;font-weight:700;font-size:64px;">Error $1</span></center><br />
   <center><span id="output-d">An error occured when requesting [<b>$2</b>].</span></center>
   <center><br /><a href="/"><b>Go Back Home</b></a></center><br />
   <script>
@@ -21,13 +21,11 @@ window.onload = function () {
   od.innerHTML = od.innerHTML.replace("$2",window.location.href);
   try {  
     if (window.navigator.userAgent.search("Mobile") == -1) {
-      document.getElementsByTagName("body")[0].style = "min-width: 900px;";
       mob = document.createElement("center");
       mob.innerHTML = "You are using desktop vision.";
       document.body.appendChild(mob);
     }
     else {
-      document.getElementsByTagName("body")[0].style = "width: 540px;";
       mob = document.createElement("center");
       mob.innerHTML = "You are using mobile vision.";
       document.body.appendChild(mob);
