@@ -44,7 +44,7 @@ else {
   textlang.desktop = "You are using desktop vision.";
 }
 if (window.navigator.userAgent.search("Mobile") == -1) {
-  window.location.href = "/error/?code=403&page=" + textlang.loc[textlang.loc.length - 1] ;
+  window.location.href = "/error/?code=403&page=" + textlang.loc ;
 }
 window.onload = function () {
   oh = _.g("id:output-h");
