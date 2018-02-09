@@ -13,6 +13,7 @@ permalink: /404.html
   <center><span id="output-d"></span></center>
   <center><br /><a href="/" id="cbh"><b></b></a></center><br />
   <script>
+try {
 textlang = {};
 textlang.loc = window.location.pathname;
 if (window.navigator.language == "zh-CN" || window.navigator.language == "zh-Hans") {
@@ -45,6 +46,9 @@ else {
 }
 if (window.navigator.userAgent.search("Mobile") == -1) {
   window.location.href = "/error/?code=403&page=" + textlang.loc ;
+}
+} catch (err) {
+  alert(err.stack);
 }
 window.onload = function () {
   oh = _.g("id:output-h");
