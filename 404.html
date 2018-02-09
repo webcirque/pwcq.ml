@@ -14,13 +14,7 @@ permalink: /404.html
   <center><br /><a href="/" id="cbh"><b></b></a></center><br />
   <script>
 textlang = {};
-if (window.location.href[window.location.href.length-1] != "/") {
-  textlang.loc = window.location.href.split("/");
-} else {
-  textlang.loc = window.location.href;
-  textlang.loc[textlang.loc.length - 1] = "";
-  textlang.loc = textlang.loc.split("/");
-}
+textlang.loc = window.location.pathname;
 if (window.navigator.language == "zh-CN" || window.navigator.language == "zh-Hans") {
   textlang.ermsg = "错误 $1";
   textlang.erdesc = "服务器出于安全原因拒绝了对页面[$2]的请求。";
