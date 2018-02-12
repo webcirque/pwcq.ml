@@ -55,7 +55,7 @@ window.onload = function () {
   od = _.g("id:output-d");
   cbh = _.g("id:cbh");
   oh.innerHTML = textlang.ermsg.replace("$1","403");
-  od.innerHTML = textlang.erdesc.replace("$2", decodeURI(textlang.loc[textlang.loc.length - 1]));
+  od.innerHTML = textlang.erdesc.replace("$2", decodeURI(textlang.loc));
   cbh.innerHTML = textlang.backHome;
   try {  
     if (window.navigator.userAgent.search("Mobile") == -1) {
