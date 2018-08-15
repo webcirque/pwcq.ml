@@ -20,7 +20,16 @@ div#ecs-header {
 	font-size: 32px;
 	line-height: 40px;
 	margin: 0;
-	background: #ccc;
-	border-bottom: 1px solid #aaa;
+	background: #f0f0f0;
+	border-bottom: 1px #aaa solid;
 	box-shadow: 0 0 2px 2px #666;
+}
+
+div#ecs-edit-btn {
+	height: 24px;
+	margin: 4px;
+	float: right;
+	background: #aaa;
+	border: 2px #888 solid;
+	border-radius: 3px;
 }
