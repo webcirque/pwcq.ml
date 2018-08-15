@@ -59,9 +59,13 @@ div#ecs-content {
 	left: 10px;
 }
 
-div#ecs-content h2, div#ecs-content h3, div#ecs-content h4, div#ecs-content h5, div#ecs-content h6, div#ecs-content p, div#ecs-content div, div#ecs-content table, div#ecs-content form {
+div#ecs-content h2, div#ecs-content h3, div#ecs-content h4, div#ecs-content h1, div#ecs-content p, div#ecs-content div, div#ecs-content table, div#ecs-content form {
 	margin: 2px 0;
 	vertical-align: middle;
+}
+
+div#ecs-content h1 {
+	font-size: 1.7em;
 }
 
 div#ecs-content h2 {
