@@ -8,7 +8,7 @@ window.onload = function () {
 	if (encr != "" ) {
 		//If URL has something to parse, it will parse.
 		console.log("[ECS] Get text to parse.");
-		content.innerHTML = "<h1>Parsing your link...</h1>";
+		content.innerHTML = "t1:Parsing your link...";
 		_import(":base64").main = function () {
 			console.log("[ECS] Base64");
 			b64 = new Base64();
@@ -19,8 +19,18 @@ window.onload = function () {
 			console.log("[ECS] Encryption key: " + elist[0] + ".");
 			ctt = elist[2];
 			console.log("[ECS] Encrypted text: " + ctt + ".");
-			_import(":crypto").main = function () {
-				console.log("[ECS] Crypto");
+			enclist = ["base64","aes","des","rabbit"];
+			if (elist[1].toLowerCase() == "base64") {
+				console.log("[ECS]No need to decrypt");
+				b64.mode(elist[0]);
+				content.innerHTML = b64.decode(ctt);
+			} else if (elist[1].toLowerCase()) {
+				console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
+				_import(":crypto").main = function () {
+					console.log("[ECS] Crypto");
+				}
+			} else {
+				console.error("[ECS]Unknown encryption!");
 			}
 		};
 	}
