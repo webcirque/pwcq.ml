@@ -1,4 +1,5 @@
 window.onload = function () {
+	document.body.style.width = (window.outerWidth) + "px";
 	header = document.getElementById("ecs-header");
 	header.style.width = (window.outerWidth) + "px";
 	content = document.getElementById("ecs-content");
