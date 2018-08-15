@@ -1,3 +1,8 @@
+document.body.style.width = (window.outerWidth) + "px";
+header = document.getElementById("ecs-header");
+header.style.width = (window.outerWidth) + "px";
+content = document.getElementById("ecs-content");
+content.style.width = (window.outerWidth - 30) + "px";
 function styler() {
 			txt = content.innerHTML.split("\n");
 		donum = 0;
@@ -43,11 +48,6 @@ if (encr != "" ) {
 	elist = ["0","LLL",""];
 }
 window.onload = function () {
-	document.body.style.width = (window.outerWidth) + "px";
-	header = document.getElementById("ecs-header");
-	header.style.width = (window.outerWidth) + "px";
-	content = document.getElementById("ecs-content");
-	content.style.width = (window.outerWidth - 30) + "px";
 	if (elist[1].toLowerCase() == "base64") {
 		console.log("[ECS] No need to decrypt");
 		context = b64.decode(ctt);
