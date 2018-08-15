@@ -2,12 +2,9 @@ big.notice {
 	display: none;
 }
 
-[id*=ecs] {
-	font-family: ProductSans, MicrosoftYahei;
-}
-
 body {
 	padding: 0;
+	font-family: ProductSans, MicrosoftYahei;
 }
 
 div#ecs-header {
