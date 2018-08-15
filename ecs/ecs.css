@@ -32,4 +32,6 @@ div#ecs-edit-btn {
 	background: #aaa;
 	border: 2px #888 solid;
 	border-radius: 3px;
+	font-size: 16px;
+	position: fixed;
 }
