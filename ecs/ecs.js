@@ -21,14 +21,8 @@ function styler() {
 		}
 		content.innerHTML = text;
 	}
-window.onload = function () {
-	document.body.style.width = (window.outerWidth) + "px";
-	header = document.getElementById("ecs-header");
-	header.style.width = (window.outerWidth) + "px";
-	content = document.getElementById("ecs-content");
-	content.style.width = (window.outerWidth - 30) + "px";
-	encr = location.hash.replace("#","");
-	if (encr != "" ) {
+encr = location.hash.replace("#","");
+if (encr != "" ) {
 		//If URL has something to parse, it will parse.
 		console.log("[ECS] Get text to parse.");
 		content.innerHTML = "t1:Parsing your link...";
@@ -58,8 +52,12 @@ window.onload = function () {
 				content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
 			}
 		};
-		styler();
-	} else {
-		styler();
-	}
+	} 
+window.onload = function () {
+	document.body.style.width = (window.outerWidth) + "px";
+	header = document.getElementById("ecs-header");
+	header.style.width = (window.outerWidth) + "px";
+	content = document.getElementById("ecs-content");
+	content.style.width = (window.outerWidth - 30) + "px";
+	styler();
 }
