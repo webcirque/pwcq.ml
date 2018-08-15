@@ -47,20 +47,21 @@ if (encr != "" ) {
 } else {
 	elist = ["0","LLL",""];
 }
-window.onload = function () {
-	if (elist[1].toLowerCase() == "base64") {
-		console.log("[ECS] No need to decrypt");
-		context = b64.decode(ctt);
-		console.log("[ECS] Decrypted!");
-		content.innerHTML = context;
-	} else if (enclist.indexOf(elist[1].toLowerCase()) != -1) {
-		console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
-		_import(":crypto").main = function () {
-			console.log("[ECS] Crypto");
-		}
-	} else {
-		console.error("[ECS]Unknown encryption!");
-		content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
+if (elist[1].toLowerCase() == "base64") {
+	console.log("[ECS] No need to decrypt");
+	context = b64.decode(ctt);
+	console.log("[ECS] Decrypted!");
+	content.innerHTML = context;
+} else if (enclist.indexOf(elist[1].toLowerCase()) != -1) {
+	console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
+	_import(":crypto").main = function () {
+		console.log("[ECS] Crypto");
 	}
-	styler();
+} else {
+	console.error("[ECS]Unknown encryption!");
+	content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
+}
+styler();
+window.onload = function () {
+	// Onload
 }
