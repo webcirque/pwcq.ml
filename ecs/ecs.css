@@ -53,7 +53,8 @@ div#ecs-content {
 	font-family: "Nueva Std", Serif, MicrosoftYahei;
 	font-size: 16px;
 	margin-top: 50px;
-	height: 100%;
+	position: absolute;
 	box-shadow: 0 0 2px 1px #888;
 	padding: 5px;
+	left: 10px;
 }
