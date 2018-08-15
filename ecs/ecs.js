@@ -15,6 +15,7 @@ window.onload = function () {
 			b64.mode(2);
 			elist = b64.decode(encr);
 			elist = elist.split(":");
+			b64.mode(0);
 			console.log("[ECS] Encryption method: " + elist[1] + ".");
 			console.log("[ECS] Encryption key: " + elist[0] + ".");
 			ctt = elist[2];
@@ -22,7 +23,6 @@ window.onload = function () {
 			enclist = ["base64","aes","des","rabbit"];
 			if (elist[1].toLowerCase() == "base64") {
 				console.log("[ECS]No need to decrypt");
-				b64.mode(0);
 				content.innerHTML = b64.decode(ctt);
 			} else if (elist[1].toLowerCase()) {
 				console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
