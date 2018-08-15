@@ -4,7 +4,7 @@ big.notice {
 
 body {
 	padding: 0;
-	font-family: ProductSans, MicrosoftYahei;
+	font-family: ProductSans;
 }
 
 div#ecs-header {
@@ -35,4 +35,8 @@ div#ecs-edit-btn {
 	border-radius: 3px;
 	font-size: 16px;
 	vertical-align: middle;
+}
+
+div#ecs-content {
+	font-family: Serif, MicrosoftYahei;
 }
