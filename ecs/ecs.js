@@ -7,6 +7,7 @@ window.onload = function () {
 	encr = location.hash.replace("#","");
 	if (encr != "" ) {
 		//If URL has something to parse, it will parse.
+		alert("Has something to parse!");
 	}
 	let txt = content.innerHTML.split("\n");
 	let donum = 0;
