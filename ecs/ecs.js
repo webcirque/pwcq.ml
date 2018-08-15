@@ -46,7 +46,8 @@ window.onload = function () {
 			enclist = ["base64","aes","des","rabbit"];
 			if (elist[1].toLowerCase() == "base64") {
 				console.log("[ECS]No need to decrypt");
-				content.innerHTML = b64.decode(ctt);
+				context = b64.decode(ctt);
+				content.innerHTML = context;
 			} else if (elist[1].toLowerCase()) {
 				console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
 				_import(":crypto").main = function () {
