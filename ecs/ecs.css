@@ -2,6 +2,16 @@ big.notice {
 	display: none;
 }
 
+::selection {
+	background-color: #000;
+	color: #fff;
+}
+
+::selection img, ::selection div {
+	background: #fff;
+	filter: invert(100%);
+}
+
 body {
 	padding: 0;
 	font-family: ProductSans;
@@ -35,6 +45,8 @@ div#ecs-edit-btn {
 	border-radius: 3px;
 	font-size: 16px;
 	vertical-align: middle;
+	padding: 0 3px;
+	cursor: default;
 }
 
 div#ecs-content {
