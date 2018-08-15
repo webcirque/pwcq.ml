@@ -1,11 +1,4 @@
-window.onload = function () {
-	document.body.style.width = (window.outerWidth) + "px";
-	header = document.getElementById("ecs-header");
-	header.style.width = (window.outerWidth) + "px";
-	content = document.getElementById("ecs-content");
-	content.style.width = (window.outerWidth - 30) + "px";
-	encr = location.hash.replace("#","");
-	function _styler_() {
+function styler() {
 			txt = content.innerHTML.split("\n");
 		donum = 0;
 		while (donum < txt.length) {
@@ -28,6 +21,13 @@ window.onload = function () {
 		}
 		content.innerHTML = text;
 	}
+window.onload = function () {
+	document.body.style.width = (window.outerWidth) + "px";
+	header = document.getElementById("ecs-header");
+	header.style.width = (window.outerWidth) + "px";
+	content = document.getElementById("ecs-content");
+	content.style.width = (window.outerWidth - 30) + "px";
+	encr = location.hash.replace("#","");
 	if (encr != "" ) {
 		//If URL has something to parse, it will parse.
 		console.log("[ECS] Get text to parse.");
@@ -58,8 +58,8 @@ window.onload = function () {
 				content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
 			}
 		};
-		_styler_();
+		styler();
 	} else {
-		_styler_();
+		styler();
 	}
 }
