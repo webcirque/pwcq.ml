@@ -9,21 +9,23 @@ window.onload = function () {
 		//If URL has something to parse, it will parse.
 		console.log("[ECS] Get text to parse.");
 		content.innerHTML = "<h1>Parsing your link...</h1>";
-		let elist = encr.split(":");
-		console.log("[ECS] Encryption method: " + elist[1] + ".");
-		console.log("[ECS] Encryption key: " + elist[0] + ".");
-		console.log("[ECS] Encrypted text: " + elist[2] + ".");
 		_import(":base64").main = function () {
 			console.log("[ECS] Base64");
-		};
-		_import(":crypto").main = function () {
-			console.log("[ECS] Crypto");
 			b64 = new Base64();
-			
-		}
+			b64.mode(2);
+			elist = b64.decode(encr);
+			elist = elist.split(":");
+			console.log("[ECS] Encryption method: " + elist[1] + ".");
+			console.log("[ECS] Encryption key: " + elist[0] + ".");
+			ctt = elist[2];
+			console.log("[ECS] Encrypted text: " + ctt + ".");
+			_import(":crypto").main = function () {
+				console.log("[ECS] Crypto");
+			}
+		};
 	}
-	let txt = content.innerHTML.split("\n");
-	let donum = 0;
+	txt = content.innerHTML.split("\n");
+	donum = 0;
 	while (donum < txt.length) {
 		if (txt[donum].split(":")[0] == "t1") {
 			txt[donum] = "<h1>" + txt[donum].replace("t1:","") + "</h1>";
@@ -37,7 +39,7 @@ window.onload = function () {
 		donum ++;
 	}
 	donum = 0;
-	let text = "";
+	text = "";
 	while (donum < txt.length) {
 		text += txt[donum] + "\n";
 		donum ++;
