@@ -29,12 +29,13 @@ div#ecs-header span {
 }
 
 div#ecs-edit-btn {
+	line-height: 24px;
 	height: 24px;
-	margin: 4px;
+	margin: 6px;
 	float: right;
-	background: #aaa;
-	border: 2px #888 solid;
+	background: #fff;
+	border: 2px #ddd solid;
 	border-radius: 3px;
 	font-size: 16px;
-	vertical-align: center;
+	vertical-align: middle;
 }
