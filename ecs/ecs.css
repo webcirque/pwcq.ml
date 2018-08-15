@@ -15,6 +15,7 @@ big.notice {
 body {
 	padding: 0;
 	font-family: ProductSans;
+	overflow-x: hidden;
 }
 
 div#ecs-header {
