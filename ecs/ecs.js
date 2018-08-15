@@ -7,10 +7,10 @@ window.onload = function () {
 	encr = location.hash.replace("#","");
 	if (encr != "" ) {
 		//If URL has something to parse, it will parse.
+		_import(":base64");
 		_import(":crypto").onload = function () {
 			alert("Has something to parse!");
 		}
-		_import(":base64");
 	}
 	let txt = content.innerHTML.split("\n");
 	let donum = 0;
