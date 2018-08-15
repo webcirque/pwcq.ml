@@ -1,4 +1,6 @@
 window.onload = function () {
+	header = document.getElementById("ecs-header");
+	header.style.width = (window.outerWidth) + "px";
 	content = document.getElementById("ecs-content");
 	content.style.width = (window.outerWidth - 30) + "px";
 	encr = location.hash.replace("#","");
