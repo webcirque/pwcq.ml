@@ -31,6 +31,7 @@ window.onload = function () {
 				}
 			} else {
 				console.error("[ECS]Unknown encryption!");
+				content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
 			}
 		};
 	}
