@@ -7,9 +7,19 @@ window.onload = function () {
 	encr = location.hash.replace("#","");
 	if (encr != "" ) {
 		//If URL has something to parse, it will parse.
-		_import(":base64");
-		_import(":crypto").onload = function () {
-			alert("Has something to parse!");
+		console.log("[ECS] Get text to parse.");
+		content.innerHTML = "<h1>Parsing your link...</h1>";
+		let elist = encr.split(":");
+		console.log("[ECS] Encryption method: " + elist[1] + ".");
+		console.log("[ECS] Encryption key: " + elist[0] + ".");
+		console.log("[ECS] Encrypted text: " + elist[2] + ".");
+		_import(":base64").main = function () {
+			console.log("[ECS] Base64");
+		};
+		_import(":crypto").main = function () {
+			console.log("[ECS] Crypto");
+			b64 = new Base64();
+			
 		}
 	}
 	let txt = content.innerHTML.split("\n");
