@@ -22,6 +22,7 @@ window.onload = function () {
 			enclist = ["base64","aes","des","rabbit"];
 			if (elist[1].toLowerCase() == "base64") {
 				console.log("[ECS]No need to decrypt");
+				b64.mode(0);
 				content.innerHTML = b64.decode(ctt);
 			} else if (elist[1].toLowerCase()) {
 				console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
