@@ -44,29 +44,29 @@ if (encr != "" ) {
 		ctt = elist[2];
 		console.log("[ECS] Encrypted text: " + ctt + ".");
 		enclist = ["base64","aes","des","rabbit"];
+		if (elist[1].toLowerCase() == "base64") {
+			console.log("[ECS] No need to decrypt");
+			context = b64.decode(ctt);
+			console.log("[ECS] Decrypted!");
+			content.innerHTML = context;
+			styler();
+		} else if (elist[1].toLowerCase() == "sem") {
+			console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
+			
+		} else if (enclist.indexOf(elist[1].toLowerCase()) != -1) {
+			console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
+			_import(":crypto").main = function () {
+				console.log("[ECS] Crypto");
+			}
+			styler();
+		} else {
+			console.error("[ECS]Unknown encryption!");
+			content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
+			styler();
+		}
 	}
 } else {
 	elist = ["0","LLL",""];
-}
-if (elist[1].toLowerCase() == "base64") {
-	console.log("[ECS] No need to decrypt");
-	context = b64.decode(ctt);
-	console.log("[ECS] Decrypted!");
-	content.innerHTML = context;
-	styler();
-} else if (elist[1].toLowerCase() == "sem") {
-	console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
-	
-} else if (enclist.indexOf(elist[1].toLowerCase()) != -1) {
-	console.log("[ECS]Need to decrypt by " + elist[1].toUpperCase() + ".");
-	_import(":crypto").main = function () {
-		console.log("[ECS] Crypto");
-	}
-	styler();
-} else {
-	console.error("[ECS]Unknown encryption!");
-	content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
-	styler();
 }
 window.onload = function () {
 	// Onload
