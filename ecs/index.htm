@@ -18,16 +18,20 @@
 t1:Welcome to ECS Parser!
 Developed by SkyFuInMC, this web app is used for deliver news in a secure way.</p>
 All information is contained in the given link, so you will not change anything inside the article unless you changed the link.</p>
-t1:How to use it?</h2>
+t1:How to use it?
 All editing action is done by clicking “Edit” button!</p>
 It's easy, right?
 t2:Create an article
->First, you can write down your name (or any name you want though) in the <i>Author</i> Box. Then write your article in HTML inside <i>Content</i> box!<
+First, you can write down your name (or any name you want though) in the <i>Author</i> Box. Then write your article in HTML inside <i>Content</i> box!<
 At last, click <i>Submit</i> button to generate a link!
 Yay, you done it!
 <i>PS: You may use a URL shorten service to shorten the link.</i>
 t1:How to style it?
 It's same as you edit an HTML file, all markups are in HTML.
+But some line headers are used to format more easily, such as <i>usr: , t1: , t2: , t3:</i>.
+The first one is used to declare the author of this article, while others are used to declare titles in different sizes.
+t1:How to load and store articles on the site server?
+Different from parsing information already inside the link, you should use <b>"?load=<i>article_path</i>"</b> to load an article, and use generated text inside editor to create a file.
 	</div>
 	<script src="ecs.js"></script>
 </body>
