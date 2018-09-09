@@ -14,6 +14,11 @@
 <script src="http://mwash.moecdn.top/libs/bootstrap/3.3.7/bootstrap.min.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="http://mwash.moecdn.top/images/mwash.ico" media="screen">
 <script src="https://scriptlib.pwcq.ml/scriptlib.js"></script>
+	<script>
+if ('serviceWorker' in navigator) {
+ navigator.serviceWorker.register('/sw.js');
+}
+</script>
 <style>
 .crow {
     float:left;
