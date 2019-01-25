@@ -1,0 +1,122 @@
+/* Loads various fonts */
+@font-face {
+    font-family: CaviarDreams;
+    src: url('https://api.mwashcdn.ml/font/CaviarDreams_r.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: ProductSans;
+    src: url('https://api.mwashcdn.ml/font/ProductSans_r.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: VerdanaWeb;
+    src: url('https://api.mwashcdn.ml/font/Verdana_r.ttf');
+    font-weight: 400;
+}
+
+/* Global styles */
+body {
+	background: url("images/index_background.jpg");
+	color: #fff;
+	overflow: hidden;
+	font-family: "Verdana", VerdanaWeb;
+}
+
+/* Navbar */
+#navbar-pic {
+	width: 32px;
+	height: 32px;
+	background: url("https://avatars3.githubusercontent.com/u/43069941?s=32&v=4");
+	float: left;
+}
+
+.top-navbar {
+	background: rgba(0, 0, 0, 0.4);
+	border-bottom: 1px solid #fff;
+	padding: 4px 4px 12px 4px;
+	cursor: default;
+}
+
+#navbar-text {
+	font-size: 28px;
+	line-height: 32px;
+	height: 32px;
+	float: left;
+	margin-left: 8px;
+	margin-right: 8px;
+	font-family: "ProductSans";
+	font-weight: bold;
+}
+
+.nav-tabs {
+	list-style-type: none;
+	margin: 0;
+	margin-left: 4px;
+	padding: 0;
+}
+
+.nav-tabs li {
+	display: inline-block;
+	font-size: 24px;
+	height: 32px;
+	line-height: 32px;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+	padding: 0 8px;
+	font-family: CaviarDreams;
+	background: transparent;
+	transition: background 0.3s;
+}
+
+.nav-tabs li:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-tabs li.nav-tabs-active {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-tabs a {
+	font-weight: normal !important;
+}
+
+/* Page content */
+.content {
+	overflow: auto;
+	font-size: 16px;
+}
+
+.content a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.content div.content-card {
+	background: rgba(0, 0, 0, 0.4);
+	margin: 8px;
+	padding: 8px;
+	border: 1px solid #fff;
+	border-radius: 4px;
+	min-width: 326px;
+	float: left;
+}
+
+.content-card h2 {
+	margin: 2px;
+}
+
+.content-card p {
+	margin: 2px;
+}
+
+/* Page footer */
+.footer {
+	text-align: center;
+	font-family: "ProductSans";
+	font-size: 14px;
+	padding: 6px;
+	border-top: 1px solid #fff;
+	background: rgba(0, 0, 0, 0.4);
+}
