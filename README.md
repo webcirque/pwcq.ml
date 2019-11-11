@@ -1,6 +1,6 @@
-# mwash.github.io
-MWASH's public web interface.
+# webcirque.github.io
+Webcirque's public web interface.
 
-https://pwcq.ml
+https://webcirque.github.io
 
-Contact: 357838340@qq.com
+Contact: webcirque@gmail.com
