@@ -28,6 +28,7 @@ function styler() {
 }
 styler();
 encr = location.hash.replace("#","");
+try {
 if (encr != "" ) {
 	//If URL has something to parse, it will parse.
 	console.log("[ECS] Get text to parse.");
@@ -68,6 +69,7 @@ if (encr != "" ) {
 } else {
 	elist = ["0","LLL",""];
 }
+} catch (e) {alert(e.stack)};
 window.onload = function () {
 	// Onload
 }
