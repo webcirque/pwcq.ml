@@ -28,12 +28,12 @@ function styler() {
 }
 styler();
 encr = location.hash.replace("#","");
-try {
 if (encr != "" ) {
 	//If URL has something to parse, it will parse.
 	console.log("[ECS] Get text to parse.");
 	content.innerHTML = "t1:Parsing your link...";
 	_import(":base64").main = function () {
+try{
 		console.log("[ECS] Base64");
 		b64 = new Base64();
 		b64.mode(2);
@@ -65,11 +65,11 @@ if (encr != "" ) {
 			content.innerHTML += "t1:<span style=\"color: red\">Corrupted link!</span>";
 			styler();
 		}
+} catch (e) {alert(e.stack)};
 	}
 } else {
 	elist = ["0","LLL",""];
 }
-} catch (e) {alert(e.stack)};
 window.onload = function () {
 	// Onload
 }
