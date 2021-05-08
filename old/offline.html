@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<title>Offline</title>
+<meta charset="UTF-8"></meta>
+<style>
+  div p {
+    margin: 1.5px 4px;
+    text-align: center;
+  }
+</style>
+<script>
+  setTimeout(function () {
+    location.reload();
+  }, Math.floor(Math.random()*8)*250+4000);
+</script>
+</head>
+<body tabindex="0">
+<div style="font-size: 24px; width: 64%; min-width: 280px; max-width: 960px; padding: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #555; color: #eee; box-shadow: 0 0 2px 2px rgba(0,0,0,0.6); border: 0 solid; border-radius: 3px;">
+  <center><img src="offline.svg" style="filter: invert(100%); width: 128px; height: 128px;"></img></center>
+  <p>You are offline</p>
+  <p style="color: #f44;">And no available cache in SW cache</p>
+  <p>Page will refresh in 4~8 seconds</p>
+</div>
+</body>
